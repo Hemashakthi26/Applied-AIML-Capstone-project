@@ -1,0 +1,85 @@
+# Applied AI & ML Essentials Capstone Project - Part 4
+
+# LLM-Powered Intelligent System with Production Guardrails
+
+## Project Overview
+
+This project demonstrates the use of a Large Language Model (LLM) API to analyse tabular patient records and generate structured risk assessment outputs.
+
+The project follows Track B - Tabular Record Batch Scoring.
+
+## Dataset
+
+The cleaned dataset from Part 1 was used.
+
+The dataset contains patient health information including:
+
+- Age
+- Gender
+- Hypertension
+- Heart Disease
+- BMI
+- Average Glucose Level
+- Smoking Status
+- Stroke
+
+Three sample records were selected and sent to the LLM for scoring.
+
+## LLM Integration
+
+The project uses an LLM API through HTTP POST requests.
+
+The LLM receives:
+
+- System prompt containing scoring instructions
+- User prompt containing patient record data
+
+The output is generated in JSON format.
+
+## Structured Output Validation
+
+A JSON schema was created to validate the LLM response.
+
+The response format contains:
+
+- Risk tier
+- Review flag
+- Primary signal
+- Confidence level
+- Recommended action
+
+Invalid responses are rejected during validation.
+
+## Prompt Design
+
+The prompt instructs the LLM to:
+
+- Analyse patient risk factors
+- Return only JSON output
+- Provide consistent risk assessment
+
+Temperature control was tested:
+
+- Temperature 0 provides more consistent and deterministic responses.
+- Higher temperature values may produce more variation.
+
+## Production Guardrails
+
+A simple PII detection guardrail was implemented.
+
+The system checks for:
+
+- Email addresses
+- Phone numbers
+
+Requests containing personal information are blocked before sending data to the LLM.
+
+## Project Structure
+part4/
+│
+├── data/
+│ └── cleaned_data.csv
+│
+├── part4_llm_scoring.ipynb
+│
+└── README.md
