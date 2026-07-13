@@ -1,0 +1,123 @@
+# Applied AI & ML Essentials Capstone Project - Part 2
+
+## Supervised Machine Learning Model
+
+## Project Overview
+
+This project focuses on building and evaluating supervised machine learning models using the cleaned dataset created in Part 1.
+
+Two models were developed:
+
+1. Regression Model - Predicting average glucose level
+2. Classification Model - Predicting stroke occurrence
+
+## Dataset
+
+The dataset used is the cleaned Stroke Prediction Dataset from Part 1.
+
+The dataset contains health and demographic information of patients including:
+
+- Age
+- Gender
+- Hypertension
+- Heart Disease
+- Work Type
+- Residence Type
+- BMI
+- Average Glucose Level
+- Smoking Status
+- Stroke
+
+## Target Variables
+
+### Regression Target
+
+The regression target selected was:
+
+`avg_glucose_level`
+
+The model predicts the glucose level based on patient features.
+
+### Classification Target
+
+The classification target selected was:
+
+`stroke`
+
+The model predicts whether a patient has stroke or not.
+
+## Data Preprocessing
+
+- Loaded the cleaned dataset using pandas.
+- Removed target columns from the feature set.
+- Converted categorical variables using one-hot encoding.
+- Applied StandardScaler for feature scaling.
+- The scaler was fitted only on training data to avoid data leakage.
+
+## Regression Models
+
+### Linear Regression
+
+A Linear Regression model was trained and evaluated using:
+
+- Mean Squared Error (MSE)
+- R² Score
+
+### Ridge Regression
+
+Ridge Regression with alpha = 1.0 was also trained and compared with Linear Regression.
+
+Ridge regression helps reduce overfitting by applying L2 regularization.
+
+## Classification Model
+
+### Logistic Regression
+
+A Logistic Regression model was used for stroke prediction.
+
+Class imbalance was handled using:
+
+`class_weight='balanced'`
+
+The model was evaluated using:
+
+- Confusion Matrix
+- Accuracy
+- Precision
+- Recall
+- F1 Score
+- ROC Curve
+- AUC Score
+
+## Threshold Analysis
+
+Prediction probabilities were generated using `predict_proba()`.
+
+Different classification thresholds between 0.30 and 0.70 were tested to compare:
+
+- Precision
+- Recall
+- F1 Score
+
+## Regularization Experiment
+
+A second Logistic Regression model was trained using:
+
+`C = 0.01`
+
+The performance was compared with the baseline model using:
+
+`C = 1.0`
+
+## Project Structure
+part2/
+│
+├── data/
+│ └── cleaned_data.csv
+│
+├── plots/
+│ └── roc_curve.png
+│
+├── part2_supervised_ml.ipynb
+│
+└── README.md
